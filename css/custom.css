@@ -11524,7 +11524,8 @@ figcaption {
 
     .logo {
         max-width: 64%;
-        margin-top: 6px
+        margin-top: 6px;
+        margin-left: 80px
     }
 
     .footer-container {
