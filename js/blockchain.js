@@ -1484,8 +1484,9 @@ async function fetchAccountData() {
 		document.getElementById("errormsg").innerHTML = `Wallet: ${truncate(selectedAccount)}`
 		document.getElementById("btn-connect").innerHTML = "Mint"
 		document.getElementById("text2").innerHTML = ""
+		amountChosen = document.getElementById("number").value
 
-
+		document.getElementById("whitelistcheck").innerHTML = `Price: ${0.66 * amountChosen } ETH`
 
 		document.getElementById("whitelistcheck").style.color = "black"
 
