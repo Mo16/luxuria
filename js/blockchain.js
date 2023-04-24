@@ -1485,7 +1485,7 @@ async function fetchAccountData() {
 		document.getElementById("btn-connect").innerHTML = "Mint"
 		document.getElementById("text2").innerHTML = ""
 
-		document.getElementById("whitelistcheck").innerHTML = ``
+
 
 		document.getElementById("whitelistcheck").style.color = "black"
 
