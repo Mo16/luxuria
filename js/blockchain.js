@@ -6,7 +6,26 @@ function truncate(input) {
 	return `${input.slice(0, 6)}...${input.slice(-4)}`
 }
 
-const ABI = [{
+const ABI = [
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_receiver",
+				"type": "address"
+			}
+		],
+		"name": "mintForAddress",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
@@ -22,9 +41,118 @@ const ABI = [{
 		"type": "error"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "BalanceQueryForZeroAddress",
 		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "BatchFiveMint",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "BatchFourMint",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "BatchOneMint",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "BatchThreeMint",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "BatchTwotMint",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "burn",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "KickstarterMint",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
 	},
 	{
 		"inputs": [],
@@ -78,7 +206,8 @@ const ABI = [{
 	},
 	{
 		"anonymous": false,
-		"inputs": [{
+		"inputs": [
+			{
 				"indexed": true,
 				"internalType": "address",
 				"name": "owner",
@@ -102,7 +231,8 @@ const ABI = [{
 	},
 	{
 		"anonymous": false,
-		"inputs": [{
+		"inputs": [
+			{
 				"indexed": true,
 				"internalType": "address",
 				"name": "owner",
@@ -126,7 +256,8 @@ const ABI = [{
 	},
 	{
 		"anonymous": false,
-		"inputs": [{
+		"inputs": [
+			{
 				"indexed": true,
 				"internalType": "uint256",
 				"name": "fromTokenId",
@@ -155,8 +286,22 @@ const ABI = [{
 		"type": "event"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "mintForSelf",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"anonymous": false,
-		"inputs": [{
+		"inputs": [
+			{
 				"indexed": true,
 				"internalType": "address",
 				"name": "previousOwner",
@@ -173,643 +318,6 @@ const ABI = [{
 		"type": "event"
 	},
 	{
-		"anonymous": false,
-		"inputs": [{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "Transfer",
-		"type": "event"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHFIVECOST",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHFIVECOSTPREMIUM",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHFIVEMAXSUPPLY",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHFIVEMAXSUPPLYPREMIUM",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHFOURCOST",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHFOURCOSTPREMIUM",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHFOURMAXSUPPLY",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHFOURMAXSUPPLYPREMIUM",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHONECOST",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHONECOSTPREMIUM",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHONEMAXSUPPLY",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHONEMAXSUPPLYPREMIUM",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHTHREECOST",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHTHREECOSTPREMIUM",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHTHREEMAXSUPPLY",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHTHREEMAXSUPPLYPREMIUM",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHTWOCOST",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHTWOCOSTPREMIUM",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHTWOMAXSUPPLY",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "BATCHTWOMAXSUPPLYPREMIUM",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_amount",
-			"type": "uint256"
-		}],
-		"name": "BatchFiveMint",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_amount",
-			"type": "uint256"
-		}],
-		"name": "BatchFourMint",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_amount",
-			"type": "uint256"
-		}],
-		"name": "BatchOneMint",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_amount",
-			"type": "uint256"
-		}],
-		"name": "BatchThreeMint",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_amount",
-			"type": "uint256"
-		}],
-		"name": "BatchTwotMint",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "KICKSTARTERCOST",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "KICKSTARTERMAXSUPPLY",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_amount",
-			"type": "uint256"
-		}],
-		"name": "KickstarterMint",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "approve",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "address",
-			"name": "owner",
-			"type": "address"
-		}],
-		"name": "balanceOf",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "tokenId",
-			"type": "uint256"
-		}],
-		"name": "burn",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "cost",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "_cost",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "tokenId",
-			"type": "uint256"
-		}],
-		"name": "getApproved",
-		"outputs": [{
-			"internalType": "address",
-			"name": "",
-			"type": "address"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_tokenId",
-			"type": "uint256"
-		}],
-		"name": "getOwnershipData",
-		"outputs": [{
-			"components": [{
-					"internalType": "address",
-					"name": "addr",
-					"type": "address"
-				},
-				{
-					"internalType": "uint64",
-					"name": "startTimestamp",
-					"type": "uint64"
-				},
-				{
-					"internalType": "bool",
-					"name": "burned",
-					"type": "bool"
-				},
-				{
-					"internalType": "uint24",
-					"name": "extraData",
-					"type": "uint24"
-				}
-			],
-			"internalType": "struct IERC721A.TokenOwnership",
-			"name": "",
-			"type": "tuple"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "hiddenMetadataUri",
-		"outputs": [{
-			"internalType": "string",
-			"name": "",
-			"type": "string"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			}
-		],
-		"name": "isApprovedForAll",
-		"outputs": [{
-			"internalType": "bool",
-			"name": "",
-			"type": "bool"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "isBatchFiveActive",
-		"outputs": [{
-			"internalType": "bool",
-			"name": "",
-			"type": "bool"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "isBatchFourActive",
-		"outputs": [{
-			"internalType": "bool",
-			"name": "",
-			"type": "bool"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "isBatchOneActive",
-		"outputs": [{
-			"internalType": "bool",
-			"name": "",
-			"type": "bool"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "isBatchThreeActive",
-		"outputs": [{
-			"internalType": "bool",
-			"name": "",
-			"type": "bool"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "isBatchTwoActive",
-		"outputs": [{
-			"internalType": "bool",
-			"name": "",
-			"type": "bool"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "isEconomicalSaleOn",
-		"outputs": [{
-			"internalType": "bool",
-			"name": "",
-			"type": "bool"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "isKickStarterActive",
-		"outputs": [{
-			"internalType": "bool",
-			"name": "",
-			"type": "bool"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "maxSupply",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-				"internalType": "uint256",
-				"name": "_amount",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "_receiver",
-				"type": "address"
-			}
-		],
-		"name": "mintForAddress",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_amount",
-			"type": "uint256"
-		}],
-		"name": "mintForSelf",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "name",
-		"outputs": [{
-			"internalType": "string",
-			"name": "",
-			"type": "string"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "address",
-			"name": "_owner",
-			"type": "address"
-		}],
-		"name": "numberMinted",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "owner",
-		"outputs": [{
-			"internalType": "address",
-			"name": "",
-			"type": "address"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "tokenId",
-			"type": "uint256"
-		}],
-		"name": "ownerOf",
-		"outputs": [{
-			"internalType": "address",
-			"name": "",
-			"type": "address"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"name": "renounceOwnership",
 		"outputs": [],
@@ -817,45 +325,8 @@ const ABI = [{
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "revealed",
-		"outputs": [{
-			"internalType": "bool",
-			"name": "",
-			"type": "bool"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-				"internalType": "uint256",
-				"name": "_tokenId",
-				"type": "uint256"
-			},
+		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "_salePrice",
-				"type": "uint256"
-			}
-		],
-		"name": "royaltyInfo",
-		"outputs": [{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [{
 				"internalType": "address",
 				"name": "from",
 				"type": "address"
@@ -877,7 +348,8 @@ const ABI = [{
 		"type": "function"
 	},
 	{
-		"inputs": [{
+		"inputs": [
+			{
 				"internalType": "address",
 				"name": "from",
 				"type": "address"
@@ -904,18 +376,8 @@ const ABI = [{
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "saleConfig",
-		"outputs": [{
-			"internalType": "enum Luxuria.SaleConfig",
-			"name": "",
-			"type": "uint8"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [{
+		"inputs": [
+			{
 				"internalType": "address",
 				"name": "operator",
 				"type": "address"
@@ -932,172 +394,216 @@ const ABI = [{
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_cost",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cost",
+				"type": "uint256"
+			}
+		],
 		"name": "setBatchFiveCost",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_cost",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cost",
+				"type": "uint256"
+			}
+		],
 		"name": "setBatchFiveCostPremium",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_cost",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cost",
+				"type": "uint256"
+			}
+		],
 		"name": "setBatchFourCost",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_cost",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cost",
+				"type": "uint256"
+			}
+		],
 		"name": "setBatchFourCostPremium",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_cost",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cost",
+				"type": "uint256"
+			}
+		],
 		"name": "setBatchOneCost",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_cost",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cost",
+				"type": "uint256"
+			}
+		],
 		"name": "setBatchOneCostPremium",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_cost",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cost",
+				"type": "uint256"
+			}
+		],
 		"name": "setBatchThreeCost",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_cost",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cost",
+				"type": "uint256"
+			}
+		],
 		"name": "setBatchThreeCostPremium",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_cost",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cost",
+				"type": "uint256"
+			}
+		],
 		"name": "setBatchTwoCost",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_cost",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cost",
+				"type": "uint256"
+			}
+		],
 		"name": "setBatchTwoCostPremium",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "string",
-			"name": "_hiddenMetadataUri",
-			"type": "string"
-		}],
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_reciever",
+				"type": "address"
+			}
+		],
+		"name": "setFundsAddress",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_hiddenMetadataUri",
+				"type": "string"
+			}
+		],
 		"name": "setHiddenMetadataUri",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_cost",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "bool",
+				"name": "_state",
+				"type": "bool"
+			}
+		],
+		"name": "setIsEconomicalSaleOn",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cost",
+				"type": "uint256"
+			}
+		],
 		"name": "setKickstarterCost",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_state",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_state",
+				"type": "uint256"
+			}
+		],
 		"name": "setMaxSupply",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "bool",
-			"name": "_state",
-			"type": "bool"
-		}],
-		"name": "setPremiumSaleOrEconomy",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "bool",
-			"name": "_state",
-			"type": "bool"
-		}],
+		"inputs": [
+			{
+				"internalType": "bool",
+				"name": "_state",
+				"type": "bool"
+			}
+		],
 		"name": "setRevealed",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
+		"inputs": [
+			{
 				"internalType": "address",
 				"name": "_receiver",
 				"type": "address"
@@ -1114,81 +620,59 @@ const ABI = [{
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "enum Luxuria.SaleConfig",
-			"name": "_status",
-			"type": "uint8"
-		}],
+		"inputs": [
+			{
+				"internalType": "enum SnapBoot.SaleConfig",
+				"name": "_status",
+				"type": "uint8"
+			}
+		],
 		"name": "setSaleConfig",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "string",
-			"name": "_uriPrefix",
-			"type": "string"
-		}],
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_uriPrefix",
+				"type": "string"
+			}
+		],
 		"name": "setUriPrefix",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "bytes4",
-			"name": "interfaceId",
-			"type": "bytes4"
-		}],
-		"name": "supportsInterface",
-		"outputs": [{
-			"internalType": "bool",
-			"name": "",
-			"type": "bool"
-		}],
-		"stateMutability": "view",
-		"type": "function"
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
 	},
 	{
-		"inputs": [],
-		"name": "symbol",
-		"outputs": [{
-			"internalType": "string",
-			"name": "",
-			"type": "string"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_tokenId",
-			"type": "uint256"
-		}],
-		"name": "tokenURI",
-		"outputs": [{
-			"internalType": "string",
-			"name": "",
-			"type": "string"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "totalSupply",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [{
+		"inputs": [
+			{
 				"internalType": "address",
 				"name": "from",
 				"type": "address"
@@ -1210,11 +694,13 @@ const ABI = [{
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "address",
-			"name": "newOwner",
-			"type": "address"
-		}],
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
 		"name": "transferOwnership",
 		"outputs": [],
 		"stateMutability": "nonpayable",
@@ -1226,13 +712,715 @@ const ABI = [{
 		"outputs": [],
 		"stateMutability": "payable",
 		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHFIVECOST",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHFIVECOSTPREMIUM",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHFIVEMAXSUPPLY",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHFIVEMAXSUPPLYPREMIUM",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHFOURCOST",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHFOURCOSTPREMIUM",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHFOURMAXSUPPLY",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHFOURMAXSUPPLYPREMIUM",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHONECOST",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHONECOSTPREMIUM",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHONEMAXSUPPLY",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHONEMAXSUPPLYPREMIUM",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHTHREECOST",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHTHREECOSTPREMIUM",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHTHREEMAXSUPPLY",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHTHREEMAXSUPPLYPREMIUM",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHTWOCOST",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHTWOCOSTPREMIUM",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHTWOMAXSUPPLY",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "BATCHTWOMAXSUPPLYPREMIUM",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "cost",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cost",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "getApproved",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "getOwnershipData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					},
+					{
+						"internalType": "uint64",
+						"name": "startTimestamp",
+						"type": "uint64"
+					},
+					{
+						"internalType": "bool",
+						"name": "burned",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint24",
+						"name": "extraData",
+						"type": "uint24"
+					}
+				],
+				"internalType": "struct IERC721A.TokenOwnership",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "hiddenMetadataUri",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			}
+		],
+		"name": "isApprovedForAll",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isBatchFiveActive",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isBatchFourActive",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isBatchOneActive",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isBatchThreeActive",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isBatchTwoActive",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isEconomicalSaleOn",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isKickStarterActive",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "KICKSTARTERCOST",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "KICKSTARTERMAXSUPPLY",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "maxSupply",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_owner",
+				"type": "address"
+			}
+		],
+		"name": "numberMinted",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "ownerOf",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "revealed",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tokenId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_salePrice",
+				"type": "uint256"
+			}
+		],
+		"name": "royaltyInfo",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "saleConfig",
+		"outputs": [
+			{
+				"internalType": "enum SnapBoot.SaleConfig",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes4",
+				"name": "interfaceId",
+				"type": "bytes4"
+			}
+		],
+		"name": "supportsInterface",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "tokenURI",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	}
 ]
 
 
 
 
-let contractAddress = "0xb3e15B537b3E8c58e2Bb32d506b81844B1Cb4404";
+let contractAddress = "0xe2e5097c2b82e92264943520b177d275e8e7ec01";
 
 let chainData
 
@@ -1283,7 +1471,7 @@ async function fetchAccountData() {
 	const contract = new ethers.Contract(contractAddress, ABI, signer);
 
 
-	if (chainId != 97) {
+	if (chainId != 1) {
 		document.getElementById("errormsg").innerHTML = "Switch to Mainnet"
 		mintstatus = false
 	} else {
@@ -1385,7 +1573,7 @@ async function mintAllowlist() {
 		document.getElementById("btn-connect").innerHTML = "Minting..."
 
 		const cost = await contract.cost()
-
+		console.log(cost)
 		
 		total = ethers.utils.formatEther( cost ) * parseInt(amountChosen)
 		console.log(ethers.utils.parseEther(total.toString()))
